@@ -10,10 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_17_223544) do
+ActiveRecord::Schema.define(version: 2021_11_18_215236) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "animals", force: :cascade do |t|
+    t.string "name"
+    t.string "type"
+    t.string "breed"
+    t.integer "age"
+    t.string "gender"
+    t.string "description"
+    t.boolean "spayed_neutered"
+    t.boolean "house_trained"
+    t.boolean "declawed"
+    t.string "special_needs"
+    t.string "size"
+    t.string "photo"
+    t.string "contact_info"
+    t.string "contact_location"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "animal_id"
+    t.integer "user_id"
+    t.integer "priority_sort"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

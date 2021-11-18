@@ -6,7 +6,7 @@ import Footer from './components/Footer'
 
 import {
   BrowserRouter, 
-  Switch,
+  Routes,
   Route
 }from 'react-router-dom'
 
@@ -15,14 +15,13 @@ import {
 class App extends Component {
   render () {
     return (
+      
       <BrowserRouter>
-      <Header />
-      <Switch>
-        <Route exact path = "/" component = { <Home /> } />
-
-        
-      </Switch>
-      <Footer />
+        <Header />
+        <Routes>
+          <Route exact path = "/" element = { <Home /> } />
+        </Routes>
+        <Footer />
       </BrowserRouter>
     )
   }

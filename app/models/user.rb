@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :email, uniqueness: true
+
+  has_many :favorites
+  has_many :animals, through: :favorites
 end

@@ -19,7 +19,7 @@ class App extends Component {
         <Header {...this.props} />
         <Switch>
           <Route exact path='/' component={Home} />
-          <Route path='/aboutus' component={AboutUs} />
+          <Route path='/AboutUs' component={AboutUs} />
         </Switch>
         <Footer />
       </BrowserRouter>

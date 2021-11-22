@@ -15,14 +15,16 @@ class App extends Component {
   }
   render() {
     return (
-      <BrowserRouter>
-        <Header {...this.props} />
-        <Switch>
-          <Route exact path='/' component={Home} />
-          <Route path='/aboutus' component={AboutUs} />
-        </Switch>
-        <Footer />
-      </BrowserRouter>
+      <React.Fragment>
+        <BrowserRouter>
+          <Header {...this.props} />
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route path='/aboutus' component={AboutUs} />
+          </Switch>
+          <Footer />
+        </BrowserRouter>
+      </React.Fragment>
     )
   }
 }

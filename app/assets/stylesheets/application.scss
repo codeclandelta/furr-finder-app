@@ -1,1 +1,143 @@
 @import 'bootstrap';
+
+// .logo {
+  // margin: 0;
+  // font-family: 'Chicle', cursive;
+  // font-size: 4rem;
+  // line-height: 1.1;
+  // font-weight: 800;
+// }
+
+// .navbar {
+//     background-color: #6db7bd;
+// }
+
+body {
+  margin: 0;
+  min-height: 100%;
+  background-color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  color: #000;
+  font-size: 1rem;
+  line-height: 1.5;
+
+  // font-family: 'Chicle', cursive;
+  // color: black;
+}
+h1 {
+  margin: 0;
+  font-family: 'Chicle', cursive;
+  font-size: 4rem;
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 2.88rem;
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+h4 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: 'Chicle', cursive;
+  font-size: 2rem;
+  line-height: 1.4;
+  font-weight: 300;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+.blackcat {
+  opacity: 1;
+  transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg)
+    rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+  transform-style: preserve-3d;
+  width: 450px;
+}
+
+.main-wrapper.color-yellow {
+  background-color: #f9de4e;
+}
+
+.registration-form {
+    background-color: #eee;
+}
+
+.card.text-black {
+    border-radius: 25px;
+}
+
+/*--------------------------------------------------------------
+# About
+--------------------------------------------------------------*/
+.about .container {
+  position: relative;
+  z-index: 10;
+}
+.about .content {
+  padding: 30px 30px 30px 0;
+}
+.about .content h3 {
+  font-weight: 700;
+  font-size: 34px;
+  margin-bottom: 30px;
+}
+.about .content p {
+  margin-bottom: 30px;
+}
+.about .content .about-btn {
+  padding: 8px 30px 9px 30px;
+  color: #fff;
+  border-radius: 50px;
+  transition: 0.3s;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  border: 2px solid #e03a3c;
+}
+.about .content .about-btn i {
+  font-size: 16px;
+  padding-left: 5px;
+}
+.about .content .about-btn:hover {
+  background: #e35052;
+  background: #e03a3c;
+}
+.about .team .team-member {
+  margin-top: 30px;
+}
+.about .team .team-member i {
+  font-size: 40px;
+  color: #e03a3c;
+  margin-bottom: 10px;
+}
+.about .team .team-member h4 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+}
+.about .team .team-member p {
+  font-size: 15px;
+  color: #848484;
+}
+@media (max-width: 1200px) {
+  .about .content {
+    padding-right: 0;
+  }
+}
+@media (max-width: 768px) {
+  .about {
+    text-align: center;
+  }
+}

@@ -18,7 +18,7 @@ class AnimalIndex extends Component {
                         return ( 
                             <Col>
                             <Card>
-                                <Card.Img variant="top" src={animal.photo} />
+                                <Card.Img variant="top" alt={animal.photo} />
                                 <Card.Body>
                                     <Card.Title>{animal.name}</Card.Title>
                                     <Card.Text>{animal.description}</Card.Text>

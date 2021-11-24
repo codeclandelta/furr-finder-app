@@ -19,7 +19,7 @@ animals = [
       published_at: '2021-11-16T04:04:21+0000',
       contact_info: 'hopesafehouse@gmail.com',
       contact_location: 'Racine, WI, 53405, US'
-    }
+    },
     {
       api_id: 53579756,
       url: 'https://www.petfinder.com/cat/shayanne-53579756/ca/chico/friends-united-in-rescue-ca2818/?referrer_id=403f18d6-e98a-42cf-b0ba-e9e2e736f214',
@@ -40,7 +40,7 @@ animals = [
       published_at: '2021-11-16T04:03:57+0000',
       contact_info: 'friendsunitedinrescue@gmail.com',
       contact_location: 'Chico, CA, 95926, US'
-    }
+    },
     {
       api_id: 53579736,
       url: 'https://www.petfinder.com/rabbit/freckles-number-3-53579736/la/baton-rouge/magic-happens-rabbit-rescue-la158/?referrer_id=403f18d6-e98a-42cf-b0ba-e9e2e736f214',
@@ -64,32 +64,38 @@ animals = [
     }
 ]
 
-user = User.create! (
+users =  [
   {
     first_name: 'John',
     last_name: 'Brady',
     email: 'john@testing.com',
     password: '123456'
-  }
+  },
   {
     first_name: 'Marisa',
     last_name: 'Young',
     email: 'marisa@testing.com',
     password: '123456'
-  }
+  },
   {
     first_name: 'Mayuri',
     last_name: 'Dalavai',
     email: 'mayuri@testing.com',
     password: '123456'
-  }
+  },
   {
     first_name: 'Napolean',
     last_name: 'Ochoa',
     email: 'napolean@testing.com',
     password: '123456'
   }
-)
+]
+
+users.each do |attribute|
+  User.create(attribute)
+end
+
+user = User.last
 
 animals.each do |attribute|
   user.animals.create attribute

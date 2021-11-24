@@ -12,8 +12,10 @@ class AnimalIndex extends Component {
           
             <Row xs={1} md={3} className="g-4">
                 
+                
                     
                     {animals && animals.map(animal => { 
+
 
                         return ( 
                             <Col>
@@ -22,6 +24,7 @@ class AnimalIndex extends Component {
                                 <Card.Body>
                                     <Card.Title>{animal.name}</Card.Title>
                                     <Card.Text>{animal.description}</Card.Text>
+                                    <NavLink to={`/animalshow/${animal.id}`}>See More </NavLink>
                                 </Card.Body>
                             </Card>
                             </Col>

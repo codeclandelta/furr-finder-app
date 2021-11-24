@@ -3,4 +3,6 @@ class AnimalsController < ApplicationController
         animals = Animal.all
         render json: animals
     end
+    
+
 end

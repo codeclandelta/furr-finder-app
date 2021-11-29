@@ -5,8 +5,14 @@ import Footer from './components/Footer'
 import AboutUs from './pages/AboutUs'
 import AnimalsIndex from './pages/AnimalsIndex'
 import AnimalShow from './pages/AnimalShow'
+import AnimalsprotectedIndex from './pages/AnimalsprotectedIndex'
+import ReactDOM from 'react-dom'
+import Rails from "@rails/ujs"
+
+
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import AnimalprotectedIndex from './pages/AnimalsprotectedIndex'
 
 class App extends Component {
   constructor(props) {
@@ -44,8 +50,12 @@ class App extends Component {
               let id = props.match.params.id
               let animal = this.state.animals.find(a=>a.id === +id)
               return <AnimalShow animal={animal} />
-            }} />
-
+            }} />  {this.props.logged_in &&
+            <Route path="/myanimals" render={(props) => {
+              let animals = this.state.animals.filter(a => a.user_id === this.props.current_user.id)
+              return <ProtectedIndex animals={animals} deleteAnimal={this.deleteAnimal} />
+            }}/>
+          }
           </Switch>
           <Footer />
         </BrowserRouter>
@@ -53,5 +63,4 @@ class App extends Component {
     )
   }
 }
-
 export default App

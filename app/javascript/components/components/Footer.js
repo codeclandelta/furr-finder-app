@@ -12,7 +12,7 @@ class Footer extends Component {
           <NavbarText className='px-4'>&copy;2021Furr Finder</NavbarText>
           <NavLink to='/' className='px-4'>Home</NavLink> 
           <Nav className='me-auto' navbar>
-            <NavLink to='components/AboutUs' className='px-4'>About Us</NavLink>
+          <NavLink to='components/AboutUs' className='px-4'>About Us</NavLink>
           </Nav>
         </Navbar>
       </footer>

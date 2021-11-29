@@ -32,7 +32,39 @@ class App extends Component {
     .then(payload => this.setState({ animals: payload}))
     .catch(errors => console.log('Animals read errors', errors))
   }
-
+  animalCreate = (favAnimal) => {
+    fetch("/animals", {
+      body: JSON.stringify(favAnimal),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "POST"
+    })
+    .then(response => {
+      if(response.status === 422){
+        alert("There is something wrong with your submission.")
+      }
+      return response.json()
+    })
+    .then(() => this.animalRead())
+    .catch(errors => console.log("create errors:", errors))
+  }
+  animalDelete = (id) => {
+    fetch(`animals/${id}`, {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "DELETE"
+    })
+    .then(response => {
+      if(response.status === 422){
+        alert("Something went wrong with your delete action.")
+      }
+      return response.json()
+    })
+    .then(() => this.animalRead())
+    .catch(errors => console.log("delete errors:", errors))
+  }
   render() {
     const {animals} = this.state
     return (
@@ -47,14 +79,20 @@ class App extends Component {
             />
             <Route path="/animalshow/:id"
             render={(props)=>{
-              let id = props.match.params.id
+              let id = +props.match.params.id
               let animal = this.state.animals.find(a=>a.id === +id)
               return <AnimalShow animal={animal} />
-            }} />  {this.props.logged_in &&
-            <Route path="/animalsprotectedindex" render={(props) => {
+            }} /> 
+             {this.props.logged_in &&
+            <Route path="/myanimals" render={(props) => {
               let id = props.match.params.id
               let animals = this.state.animals.filter(a => a.user_id === this.props.current_user.id)
-              return <AnimalsprotectedIndex animal={animal} deleteAnimal={this.deleteAnimal} />
+              return <AnimalsprotectedIndex animals={animals} animalDelete={this.animalDelete} />
+            }}/>
+            }
+            {this.props.logged_in &&
+              <Route path="/favanimal" render={(props) => {
+                return <FavAnimal animalCreate={this.animalCreate} current_user={this.props.current_user} />
             }}/>
           }
           </Switch>

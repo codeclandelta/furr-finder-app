@@ -9,8 +9,8 @@ import HTML5Backend from 'react-dnd-html5-backend'
 
 
 class AnimalsprotectedIndex extends Component {
-    render(){
-    const {animal}=this.props
+    render() {
+    const {animals}=this.props
     // Drag sources and drop targets only interact
     // if they have the same string type.
     // You want to keep types in a separate file with
@@ -38,8 +38,8 @@ class AnimalsprotectedIndex extends Component {
   
     beginDrag(props, monitor, component) {
     // Return the data describing the dragged item
-    const animal = { id: props.id }
-      return animal
+    const Animal = { id: props.id }
+      return animals
     },
 
     endDrag(props, monitor, component) {
@@ -88,14 +88,16 @@ class Card {
   
     return connectDragSource(
         <React.Fragment>
-        <h3>My Favorites</h3>
-        <div>
+        <div className="page-body">
         I am a draggable card number {id}
         {isDragging && ' (and I am being dragged now)'}
-        </div>
-        <Row xs={1} md={1} className="g-4">
-                {animal &&
-                      <Col>
+        <h3>My Favorites</h3>
+        <br />
+        <br />
+        <article className="cards">
+                {animals && animals.map(animal => {
+                    return (
+                        <section className="card" key={apartment.id}>
                             <Card>
                                 <Card.Img variant="top" src={animal.photo} alt="picture of animal"/>
                                 <Card.Body>
@@ -114,11 +116,13 @@ class Card {
                                     <Card.Text>Location: {animal.contact_location}</Card.Text>
                                     
                                 </Card.Body>
-                            </Card>
-                        </Col>
-                         }
-                 </Row>        
-                   <Button><NavLink to = "/animalsindex">Back</NavLink></Button>
+                            </Card> 
+                            <Button onClick={() => this.props.animalDelete(animal.id)}>Delete Favorite</Button>
+              </section>
+                    )
+                })}
+                   </article>
+                   </div>
         </React.Fragment>
       )
     }

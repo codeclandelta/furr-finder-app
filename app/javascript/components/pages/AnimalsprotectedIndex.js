@@ -1,8 +1,10 @@
 import React, {Component} from 'react'
-import { useDrag } from 'react-dnd'
+import { useDrag} from 'react-dnd'
 import {NavLink} from 'react-router-dom'
 import {Button, Row, Col} from 'reactstrap'
 import Card from 'react-bootstrap/Card'
+import HTML5Backend from 'react-dnd-html5-backend'
+
 
 
 
@@ -61,15 +63,19 @@ class AnimalprotectedIndex extends Component {
     /**
     * Specifies which props to inject into your component.
     */
-    function collect(connect, monitor) {
-    return {
-    // Call this function inside render()
-    // to let React DnD handle the drag events:
-    connectDragSource: connect.dragSource(),
-    // You can ask the monitor about the current drag state:
-    isDragging: monitor.isDragging()
-    }
-  }
+     const collect = (connect, monitor) => ({
+        connectDragSource: connect.dragSource()
+    });
+    
+//     function collect(connect, monitor) {
+//     return {
+//     // Call this function inside render()
+//     // to let React DnD handle the drag events:
+//     connectDragSource: connect.dragSource(),
+//     // You can ask the monitor about the current drag state:
+//     isDragging: monitor.isDragging() 
+//     }
+//   }
   
 class Card {
     render() {

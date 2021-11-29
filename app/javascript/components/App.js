@@ -53,7 +53,7 @@ class App extends Component {
             }} />  {this.props.logged_in &&
             <Route path="/myanimals" render={(props) => {
               let animals = this.state.animals.filter(a => a.user_id === this.props.current_user.id)
-              return <ProtectedIndex animals={animals} deleteAnimal={this.deleteAnimal} />
+              return <AnimalprotectedIndex animals={animals} deleteAnimal={this.deleteAnimal} />
             }}/>
           }
           </Switch>

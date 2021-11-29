@@ -37,7 +37,7 @@ class AnimalShow extends Component{
                  </Row>        
                    <Button><NavLink to = "/animalsindex">Back</NavLink></Button>
                    <br />
-                    <Button>Add to Favorites</Button>
+                    <Button><NavLink to = "/animalsprotectedindex"></NavLink>Add to Favorites</Button>
                     <br />
                     <Button>Sign Up</Button>
               </React.Fragment>

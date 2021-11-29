@@ -12,7 +12,7 @@ import Rails from "@rails/ujs"
 
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import AnimalprotectedIndex from './pages/AnimalsprotectedIndex'
+
 
 class App extends Component {
   constructor(props) {
@@ -51,9 +51,10 @@ class App extends Component {
               let animal = this.state.animals.find(a=>a.id === +id)
               return <AnimalShow animal={animal} />
             }} />  {this.props.logged_in &&
-            <Route path="/myanimals" render={(props) => {
+            <Route path="/animalsprotectedindex" render={(props) => {
+              let id = props.match.params.id
               let animals = this.state.animals.filter(a => a.user_id === this.props.current_user.id)
-              return <AnimalprotectedIndex animals={animals} deleteAnimal={this.deleteAnimal} />
+              return <AnimalsprotectedIndex animal={animal} deleteAnimal={this.deleteAnimal} />
             }}/>
           }
           </Switch>

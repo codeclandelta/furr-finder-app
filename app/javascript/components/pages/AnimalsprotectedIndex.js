@@ -8,7 +8,7 @@ import HTML5Backend from 'react-dnd-html5-backend'
 
 
 
-class AnimalprotectedIndex extends Component {
+class AnimalsprotectedIndex extends Component {
     render(){
     const {animal}=this.props
     // Drag sources and drop targets only interact
@@ -125,4 +125,4 @@ class Card {
 }
 }
 } 
-export default AnimalprotectedIndex
+export default AnimalsprotectedIndex

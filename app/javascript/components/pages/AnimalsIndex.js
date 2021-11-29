@@ -5,6 +5,7 @@ import {NavLink} from 'react-router-dom'
 
 class AnimalIndex extends Component {
     render () {
+        console.log(this.props)
         const {animals} = this.props
         return (
         <div className="page-body">

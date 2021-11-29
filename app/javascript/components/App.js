@@ -67,6 +67,7 @@ class App extends Component {
   }
   render() {
     const {animals} = this.state
+  const {current_user} = this.props
     return (
       <React.Fragment>
         <BrowserRouter>
@@ -81,14 +82,15 @@ class App extends Component {
             render={(props)=>{
               let id = +props.match.params.id
               let animal = this.state.animals.find(a=>a.id === +id)
-              return <AnimalShow animal={animal} />
+              return <AnimalShow animal={animal} current_user = {current_user}/>
             }} /> 
              {this.props.logged_in &&
-            <Route path="/myanimals" render={(props) => {
+            <Route path="/animalsprotectedindex" render={(props) => {
               let id = props.match.params.id
               let animals = this.state.animals.filter(a => a.user_id === this.props.current_user.id)
               return <AnimalsprotectedIndex animals={animals} animalDelete={this.animalDelete} />
             }}/>
+            
             }
             {this.props.logged_in &&
               <Route path="/favanimal" render={(props) => {

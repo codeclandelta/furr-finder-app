@@ -4,8 +4,17 @@ import {Button, Row, Col} from 'reactstrap'
 import Card from 'react-bootstrap/Card'
 
 class AnimalShow extends Component{
+    handleClick = (props)=> {
+        console.log(this.props)
+    }
     render(){
-        const {animal}=this.props
+        const {
+        logged_in,
+        new_user_route,
+        sign_in_route,
+        sign_out_route,
+        animal
+        }=this.props
 
         return(
             <React.Fragment>
@@ -37,9 +46,14 @@ class AnimalShow extends Component{
                  </Row>        
                    <Button><NavLink to = "/animalsindex">Back</NavLink></Button>
                    <br />
-                    <Button><NavLink to = "/animalsprotectedindex"></NavLink>Add to Favorites</Button>
-                    <br />
-                    <Button>Sign Up</Button>
+                   {logged_in && 
+                   <a href={current_user} className='nav-link' onClick = {()=> this.handleClick(animal)} >Add to Favorites</a>
+                   }
+                   {!logged_in &&
+                   <a href= {new_user_route} className='nav-link' >Sign Up</a>
+                    
+                   }
+                    {/* <Button onClick = {()=> this.handleClick(animal)} >Add to Favorites</Button> */}
               </React.Fragment>
         )
     }

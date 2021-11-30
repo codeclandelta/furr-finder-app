@@ -9,6 +9,7 @@ import {
   Col,
 } from 'reactstrap'
 import { NavLink } from 'react-router-dom'
+import logo from '../assets/logo-furrfinder-2.png'
 
 class Header extends Component {
   render() {
@@ -17,37 +18,45 @@ class Header extends Component {
 
     return (
       <React.Fragment>
-        <Row>
-          <Col>
-            <header className='main-wrapper color-yellow'>
-              <Navbar expand='md'>
-                <NavbarText className='px-4 logo'>Furr Finder</NavbarText>
-                <NavLink to='/' className='px-4'>
-                  Home
-                </NavLink>
-                <Collapse navbar>
-                  <Nav className='me-auto' navbar>
-                    <NavItem>
-                      <NavLink to='/aboutus' className='px-4 nav-link'>
+        <header className='header-area header-sticky wow slideInDown main-wrapper color-teal'>
+          <div className='container'>
+            <Row>
+              <Col>
+                <nav className='main-nav'>
+                  <NavLink to='/' className='px-4 logo'>
+                    <img src={logo} alt='Illustration of a dog and cat' />
+                    <span>Furr Finder</span>
+                  </NavLink>
+                  <Nav>
+                    <NavItem className='scroll-to-section'>
+                      <NavLink to='/' className='px-4'>
+                        Home
+                      </NavLink>
+                    </NavItem>
+                    <NavItem className='scroll-to-section'>
+                      <NavLink to='/aboutus' className='px-4'>
                         About Us
                       </NavLink>
                     </NavItem>
-                    <NavItem>
-                      <a href={new_user_route} className='nav-link'>
+                    <NavItem className='scroll-to-section'>
+                      <a href={new_user_route} className=''>
                         Sign Up
                       </a>
                     </NavItem>
-                    <NavItem>
-                      <a href={sign_in_route} className='nav-link'>
+                    <NavItem className='scroll-to-section'>
+                      <a href={sign_in_route} className=''>
                         Sign In
                       </a>
                     </NavItem>
                   </Nav>
-                </Collapse>
-              </Navbar>
-            </header>
-          </Col>
-        </Row>
+                  <a className='menu-trigger'>
+                    <span>Menu</span>
+                  </a>
+                </nav>
+              </Col>
+            </Row>
+          </div>
+        </header>
       </React.Fragment>
     )
   }

@@ -6,9 +6,9 @@ import Adapter from 'enzyme-adapter-react-16'
 Enzyme.configure({ adapter: new Adapter() })
 
 describe('When Footer renders', () => {
-  it('displays 2 NavLink', () => {
+  it('displays 4 NavLink', () => {
     const footer = shallow(<Footer />)
     const footerNav = footer.find('NavLink')
-    expect(footerNav.length).toEqual(2)
+    expect(footerNav.length).toEqual(4)
   })
 })

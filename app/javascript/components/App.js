@@ -10,6 +10,7 @@ import ReactDOM from 'react-dom'
 import Rails from "@rails/ujs"
 
 
+import AdoptionForm from './pages/AdoptionForm'
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
@@ -18,7 +19,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      animals: []
+      animals: [],
     }
   }
 
@@ -28,9 +29,9 @@ class App extends Component {
 
   animalRead = () => {
     fetch('/animals')
-    .then(response => response.json())
-    .then(payload => this.setState({ animals: payload}))
-    .catch(errors => console.log('Animals read errors', errors))
+      .then((response) => response.json())
+      .then((payload) => this.setState({ animals: payload }))
+      .catch((errors) => console.log('Animals read errors', errors))
   }
   animalCreate = (animalsprotectedindex) => {
     fetch("/animals", {
@@ -75,7 +76,8 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={Home} />
             <Route path='/aboutus' component={AboutUs} />
-            <Route path="/animalsindex" 
+            <Route
+              path='/animalsindex'
               render={() => <AnimalsIndex animals={animals} />}
             />
             <Route path="/animalshow/:id"
@@ -97,6 +99,15 @@ class App extends Component {
                 return <AnimalsprotectedIndex animalCreate={this.animalCreate} current_user={this.props.current_user} />
             }}/>
           }
+            <Route
+              path='/animalshow/:id'
+              render={(props) => {
+                let id = props.match.params.id
+                let animal = this.state.animals.find((a) => a.id === +id)
+                return <AnimalShow animal={animal} />
+              }}
+            />
+            <Route path='/adoptionform' component={AdoptionForm} />
           </Switch>
           <Footer />
         </BrowserRouter>

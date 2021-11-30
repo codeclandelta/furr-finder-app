@@ -5,6 +5,7 @@ import Footer from './components/Footer'
 import AboutUs from './pages/AboutUs'
 import AnimalsIndex from './pages/AnimalsIndex'
 import AnimalShow from './pages/AnimalShow'
+import AdoptionForm from './pages/AdoptionForm'
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
@@ -12,7 +13,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      animals: []
+      animals: [],
     }
   }
 
@@ -22,13 +23,13 @@ class App extends Component {
 
   animalRead = () => {
     fetch('/animals')
-    .then(response => response.json())
-    .then(payload => this.setState({ animals: payload}))
-    .catch(errors => console.log('Animals read errors', errors))
+      .then((response) => response.json())
+      .then((payload) => this.setState({ animals: payload }))
+      .catch((errors) => console.log('Animals read errors', errors))
   }
 
   render() {
-    const {animals} = this.state
+    const { animals } = this.state
     return (
       <React.Fragment>
         <BrowserRouter>
@@ -36,16 +37,19 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={Home} />
             <Route path='/aboutus' component={AboutUs} />
-            <Route path="/animalsindex" 
+            <Route
+              path='/animalsindex'
               render={() => <AnimalsIndex animals={animals} />}
             />
-            <Route path="/animalshow/:id"
-            render={(props)=>{
-              let id = props.match.params.id
-              let animal = this.state.animals.find(a=>a.id === +id)
-              return <AnimalShow animal={animal} />
-            }} />
-
+            <Route
+              path='/animalshow/:id'
+              render={(props) => {
+                let id = props.match.params.id
+                let animal = this.state.animals.find((a) => a.id === +id)
+                return <AnimalShow animal={animal} />
+              }}
+            />
+            <Route path='/adoptionform' component={AdoptionForm} />
           </Switch>
           <Footer />
         </BrowserRouter>

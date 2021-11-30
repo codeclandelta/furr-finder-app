@@ -3,17 +3,17 @@ import Card from 'react-bootstrap/Card'
 import {Row, Col} from 'reactstrap'
 import {NavLink} from 'react-router-dom'
 
+
 class AnimalIndex extends Component {
     render () {
         console.log(this.props)
         const {animals} = this.props
         return (
         <div className="page-body">
+
+        <Row xs={1} md={3} className="g-4">
             <h3>Adoptable Pets</h3>
           
-            <Row xs={1} md={3} className="g-4">
-                
-                
                     
                     {animals && animals.map(animal => { 
 
@@ -32,10 +32,6 @@ class AnimalIndex extends Component {
 
                         )
                     })}
-                    
-                    
-                 
-    
             </Row>
         </div>
         )

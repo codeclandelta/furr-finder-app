@@ -32,9 +32,9 @@ class App extends Component {
     .then(payload => this.setState({ animals: payload}))
     .catch(errors => console.log('Animals read errors', errors))
   }
-  animalCreate = (favAnimal) => {
+  animalCreate = (animalsprotectedindex) => {
     fetch("/animals", {
-      body: JSON.stringify(favAnimal),
+      body: JSON.stringify(animalsprotectedindex),
       headers: {
         "Content-Type": "application/json"
       },
@@ -93,8 +93,8 @@ class App extends Component {
             
             }
             {this.props.logged_in &&
-              <Route path="/favanimal" render={(props) => {
-                return <FavAnimal animalCreate={this.animalCreate} current_user={this.props.current_user} />
+              <Route path="/animalsprotectedindex" render={(props) => {
+                return <AnimalsprotectedIndex animalCreate={this.animalCreate} current_user={this.props.current_user} />
             }}/>
           }
           </Switch>

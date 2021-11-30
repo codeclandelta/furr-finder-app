@@ -2,11 +2,24 @@ import React, {Component} from 'react'
 import {NavLink} from 'react-router-dom'
 import {Button, Row, Col} from 'reactstrap'
 import Card from 'react-bootstrap/Card'
+import { propTypes } from 'react-bootstrap/esm/Image'
+import { Redirect } from 'react-router-dom'
 
 class AnimalShow extends Component{
-    handleClick = (props)=> {
-        console.log(this.props)
+    constructor(props){
+        super(props)
+        this.state={
+        user_id: this.props.current_user.id,
+            submitted: false
+        }
     }
+//  handleClick = (props)=> {
+        //console.log(this.props)
+    // }
+handleSubmit= () => {
+    this.props.animalCreate(this.state)
+    this.setState({submitted: true})
+}
     render(){
         const {
         logged_in,
@@ -46,10 +59,13 @@ class AnimalShow extends Component{
                  </Row>        
                    <Button><NavLink to = "/animalsindex">Back</NavLink></Button>
                    <br />
-                   {logged_in && 
-                   <a href={current_user} className='nav-link' onClick = {()=> this.handleClick(animal)} >Add to Favorites</a>
+                   {!logged_in && 
+                   <NavLink to ="/animalsprotectedindex" className='nav-link' onClick = {this.handleSubmit}>Add Favorites
+                {/* {()=> this.handleClick(animal)} >Add to Favorites */}
+                    </NavLink>
                    }
-                   {!logged_in &&
+                   { this.state.submitted && <Redirect to="/animalsprotectedindex" /> }
+                   {logged_in &&
                    <a href= {new_user_route} className='nav-link' >Sign Up</a>
                     
                    }

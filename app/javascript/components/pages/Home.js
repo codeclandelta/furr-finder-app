@@ -33,12 +33,7 @@ class Home extends Component {
   render() {
     return (
       <React.Fragment>
-        <div
-          className='main-banner wow fadeIn'
-          id='top'
-          data-wow-duration='1s'
-          data-wow-delay='0.5s'
-        >
+        <div className='main-banner wow fadeIn' id='top'>
           <div className='container'>
             <Row>
               <Col className='col-lg-12'>
@@ -72,10 +67,10 @@ class Home extends Component {
                   </Col>
                   <Col className='col-lg-6'>
                     <div className='right-image wow fadeInRight'>
-                      <img
+                      {/* <img
                         src={sliderRight}
                         alt='Illustration of a smiling dog running in the grass'
-                      />
+                      /> */}
                     </div>
                   </Col>
                 </Row>

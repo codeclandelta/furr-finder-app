@@ -1,11 +1,33 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Button, Row, Col, Nav, NavItem } from 'reactstrap'
+import { Form, Button, Row, Col, Nav, NavItem } from 'reactstrap'
 import Card from 'react-bootstrap/Card'
+import { propTypes } from 'react-bootstrap/esm/Image'
+import { Redirect } from 'react-router-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 class AnimalShow extends Component {
+  handleClick = (props) => {
+    console.log(this.props)
+    fetch('/favorites', {
+      body: JSON.stringify({ id: this.props.animal.id }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+    })
+      .then((response) => {
+        console.log(response)
+        if (response.status === 200) {
+          alert('Added to Favorites.')
+        }
+        return response.json()
+      })
+      .catch((errors) => console.log('create errors:', errors))
+  }
   render() {
-    const { animal } = this.props
+    const { logged_in, new_user_route, sign_in_route, sign_out_route, animal } =
+      this.props
 
     return (
       <React.Fragment>
@@ -46,7 +68,7 @@ class AnimalShow extends Component {
                               </Button>
                             </NavItem>
                             <NavItem>
-                              <Button>
+                              <Button onClick={() => this.handleClick()}>
                                 <svg
                                   xmlns='http://www.w3.org/2000/svg'
                                   width='16'
@@ -60,9 +82,19 @@ class AnimalShow extends Component {
                                 Add to Favorites
                               </Button>
                             </NavItem>
-                            <NavItem>
-                              <Button>Sign Up</Button>
-                            </NavItem>
+                            {logged_in && (
+                              <NavItem>
+                                <NavLink
+                                  to='{new_user_route}'
+                                  className='nav-link'
+                                >
+                                  <Button>Sign Up</Button>
+                                </NavLink>
+                              </NavItem>
+                            )}
+                            {/* <a href={new_user_route} className='nav-link'>
+                              Sign Up
+                              </a> */}
                           </Nav>
                         </Col>
                       </Row>

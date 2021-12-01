@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import Card from 'react-bootstrap/Card'
 import {Row, Col} from 'reactstrap'
 import {NavLink} from 'react-router-dom'
-
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 class AnimalIndex extends Component {
     render () {

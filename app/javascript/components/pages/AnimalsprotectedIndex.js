@@ -1,10 +1,12 @@
 import React, {Component} from 'react'
 import Card from 'react-bootstrap/Card'
-import {Row, Col, Button} from 'reactstrap'
+import { Row, Col, Button} from 'reactstrap'
 import {NavLink} from 'react-router-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 class AnimalsprotectedIndex extends Component {
     constructor(props){
+        super(props)
         
     }
     handleClick = (props)=> {
@@ -20,15 +22,17 @@ class AnimalsprotectedIndex extends Component {
         return (
             <React.Fragment>
             <div className="page-body">
+            <Row xs={1} md={3} className="g-4">
             <h3>My Favorites</h3>
             <br />
             <br />
-            <Row xs={1} md={3} className="g-4">
+        
     
             {animals && animals.map(animal => { 
 
 
         return ( 
+
             <section className="card" key={animal.id}>
                 <Col>
                 <Card>
@@ -44,6 +48,7 @@ class AnimalsprotectedIndex extends Component {
                 </Card>
                 </Col>
               </section>
+    
             )
             
             })}

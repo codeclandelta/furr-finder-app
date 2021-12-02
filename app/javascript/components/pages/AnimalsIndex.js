@@ -6,8 +6,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 class AnimalIndex extends Component {
   render() {
-    console.log(this.props)
-    const { animals } = this.props
+   const { animals } = this.props
     return (
       <div className='pt-8'>
         <div className='container'>

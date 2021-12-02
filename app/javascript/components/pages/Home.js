@@ -14,21 +14,9 @@ import { NavItem } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 
 class Home extends Component {
-  state = {
-    searchTerm: '',
-  }
-  handleChange = (value) => {
-    this.setState({ searchTerm: value })
-  }
+ 
 
-  handleClick = () => {
-    console.log('handleClick')
-    console.log(this.state)
-    fetch('https://api.petfinder.com/v2/animals').then((response) =>
-      console.log(response)
-    )
-  }
-
+ 
   render() {
     return (
       <React.Fragment>

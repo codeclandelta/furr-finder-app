@@ -10,7 +10,6 @@ import {
   Nav,
 } from 'reactstrap'
 import sliderRight from '../assets/slider-right.png'
-import Image from 'react-bootstrap/Image'
 import { NavItem } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 
@@ -21,12 +20,7 @@ class Home extends Component {
   render() {
     return (
       <React.Fragment>
-        <div
-          className='main-banner wow fadeIn'
-          id='top'
-          data-wow-duration='1s'
-          data-wow-delay='0.5s'
-        >
+        <div className='main-banner wow fadeIn' id='top'>
           <div className='container'>
             <Row>
               <Col className='col-lg-12'>
@@ -37,9 +31,9 @@ class Home extends Component {
                         <Col className='col-lg-12'>
                           <h2>Welcome to Furr Finder</h2>
                           <p>
-                            Get Personalized Pet Matches. Answer a few quick
-                            questions to see your perfect matches on Furr
-                            Finder.
+                            Find your new furrmily member. We make it easier for
+                            people to adopt shelter animals and support local
+                            community shelters. Remember to ADOPT don't SHOP!!
                           </p>
                         </Col>
                         <Col className='col-lg-12'>

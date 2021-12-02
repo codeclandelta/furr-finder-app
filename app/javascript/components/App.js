@@ -6,8 +6,6 @@ import AboutUs from './pages/AboutUs'
 import AnimalsIndex from './pages/AnimalsIndex'
 import AnimalShow from './pages/AnimalShow'
 import AnimalsprotectedIndex from './pages/AnimalsprotectedIndex'
-import ReactDOM from 'react-dom'
-import Rails from "@rails/ujs"
 
 
 import AdoptionForm from './pages/AdoptionForm'
@@ -20,11 +18,14 @@ class App extends Component {
     super(props)
     this.state = {
       animals: [],
+      favorites: [],
     }
   }
 
   componentDidMount() {
-    this.animalRead()
+    this.animalRead(),
+    this.favoritesRead()
+
   }
 
   animalRead = () => {
@@ -33,23 +34,30 @@ class App extends Component {
       .then((payload) => this.setState({ animals: payload }))
       .catch((errors) => console.log('Animals read errors', errors))
   }
-  animalCreate = (animalsprotectedindex) => {
-    fetch("/animals", {
-      body: JSON.stringify(animalsprotectedindex),
-      headers: {
-        "Content-Type": "application/json"
-      },
-      method: "POST"
-    })
-    .then(response => {
-      if(response.status === 422){
-        alert("There is something wrong with your submission.")
-      }
-      return response.json()
-    })
-    .then(() => this.animalRead())
-    .catch(errors => console.log("create errors:", errors))
+
+  favoritesRead = () => {
+    fetch('/favorites')
+      .then((response) => response.json())
+      .then((payload) => this.setState({ favorites: payload }))
+      .catch((errors) => console.log('favorites read errors', errors))
   }
+  // animalCreate = (animalsprotectedindex) => {
+  //   fetch("/animals", {
+  //     body: JSON.stringify(animalsprotectedindex),
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     },
+  //     method: "POST"
+  //   })
+  //   .then(response => {
+  //     if(response.status === 422){
+  //       alert("There is something wrong with your submission.")
+  //     }
+  //     return response.json()
+  //   })
+  //   .then(() => this.animalRead())
+  //   .catch(errors => console.log("create errors:", errors))
+  // }
   animalDelete = (id) => {
     fetch(`animals/${id}`, {
       headers: {
@@ -67,7 +75,8 @@ class App extends Component {
     .catch(errors => console.log("delete errors:", errors))
   }
   render() {
-    const {animals} = this.state
+  const {animals, favorites} = this.state
+  console.log("favorites",favorites)
   const {current_user} = this.props
     return (
       <React.Fragment>
@@ -89,16 +98,15 @@ class App extends Component {
              {this.props.logged_in &&
             <Route path="/animalsprotectedindex" render={(props) => {
               let id = props.match.params.id
-              let animals = this.state.animals.filter(a => a.user_id === this.props.current_user.id)
-              return <AnimalsprotectedIndex animals={animals} animalDelete={this.animalDelete} />
+            return <AnimalsprotectedIndex animals={animals} favorites={favorites} animalDelete={this.animalDelete} />
             }}/>
             
             }
-            {this.props.logged_in &&
+            {/* {this.props.logged_in &&
               <Route path="/animalsprotectedindex" render={(props) => {
                 return <AnimalsprotectedIndex animalCreate={this.animalCreate} current_user={this.props.current_user} />
             }}/>
-          }
+          } */}
             <Route
               path='/animalshow/:id'
               render={(props) => {

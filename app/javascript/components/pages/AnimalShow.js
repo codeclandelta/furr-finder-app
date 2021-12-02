@@ -8,7 +8,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 class AnimalShow extends Component {
   handleClick = (props) => {
-    console.log(this.props)
+    console.log("label" , this.props)
     fetch('/favorites', {
       body: JSON.stringify({ id: this.props.animal.id }),
       headers: {
@@ -27,7 +27,7 @@ class AnimalShow extends Component {
   }
 
   render() {
-    const { logged_in, new_user_route, sign_in_route, sign_out_route, animal } =
+    const { logged_in, new_user_route,  animal } =
       this.props
 
     return (

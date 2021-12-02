@@ -41,27 +41,12 @@ class App extends Component {
       .then((payload) => this.setState({ favorites: payload }))
       .catch((errors) => console.log('favorites read errors', errors))
   }
-  // animalCreate = (animalsprotectedindex) => {
-  //   fetch("/animals", {
-  //     body: JSON.stringify(animalsprotectedindex),
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     },
-  //     method: "POST"
-  //   })
-  //   .then(response => {
-  //     if(response.status === 422){
-  //       alert("There is something wrong with your submission.")
-  //     }
-  //     return response.json()
-  //   })
-  //   .then(() => this.animalRead())
-  //   .catch(errors => console.log("create errors:", errors))
-  // }
-  animalDelete = (id) => {
-    fetch(`animals/${id}`, {
+
+  favoriteDelete = (id, animal_id, user_id) => {
+    fetch(`favorites/${id}`, {
+      body: JSON.stringify({ animal_id, user_id }),
       headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json',
       },
       method: "DELETE"
     })
@@ -71,9 +56,10 @@ class App extends Component {
       }
       return response.json()
     })
-    .then(() => this.animalRead())
+    .then(() => this.favoritesRead())
     .catch(errors => console.log("delete errors:", errors))
   }
+  
   render() {
   const {animals, favorites} = this.state
   console.log("favorites",favorites)
@@ -95,26 +81,17 @@ class App extends Component {
               let animal = this.state.animals.find(a=>a.id === +id)
               return <AnimalShow animal={animal} current_user = {current_user}/>
             }} /> 
+            
              {this.props.logged_in &&
             <Route path="/animalsprotectedindex" render={(props) => {
               let id = props.match.params.id
-            return <AnimalsprotectedIndex animals={animals} favorites={favorites} animalDelete={this.animalDelete} />
+              let favorites = this.state.favorites
+            return <AnimalsprotectedIndex animals={animals} favorites={favorites} favoriteDelete={this.favoriteDelete} />
             }}/>
             
             }
-            {/* {this.props.logged_in &&
-              <Route path="/animalsprotectedindex" render={(props) => {
-                return <AnimalsprotectedIndex animalCreate={this.animalCreate} current_user={this.props.current_user} />
-            }}/>
-          } */}
-            <Route
-              path='/animalshow/:id'
-              render={(props) => {
-                let id = props.match.params.id
-                let animal = this.state.animals.find((a) => a.id === +id)
-                return <AnimalShow animal={animal} />
-              }}
-            />
+          
+           
             <Route path='/adoptionform' component={AdoptionForm} />
           </Switch>
           <Footer />

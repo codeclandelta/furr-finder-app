@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Card from 'react-bootstrap/Card'
-import { Row, Col, Button } from 'reactstrap'
+import { Row, Col, Button, Form, Input, FormGroup, Ranking } from 'reactstrap'
 import { NavLink } from 'react-router-dom'
 
 class AnimalsprotectedIndex extends Component {

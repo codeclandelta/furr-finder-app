@@ -8,7 +8,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 class AnimalShow extends Component {
   handleClick = (props) => {
-    console.log("label" , this.props)
+    console.log('label', this.props)
     fetch('/favorites', {
       body: JSON.stringify({ id: this.props.animal.id }),
       headers: {
@@ -26,8 +26,7 @@ class AnimalShow extends Component {
       .catch((errors) => console.log('create errors:', errors))
   }
   render() {
-    const { logged_in, new_user_route,  animal } =
-      this.props
+    const { logged_in, new_user_route, sign_in_route, animal } = this.props
 
     return (
       <React.Fragment>

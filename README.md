@@ -13,7 +13,7 @@ Overview
 Furr Finder provides care and shelter for animals, support and resources for people, and education to promote the humane treatment of animals.
 
 Features
-This can be a list of features or just a description of what this project does / what can be done with it. I prefer presenting information in a bullet or numbered list as it improves the ability to scan through and gather information quickly. Short, specific pieces of information are much easier to digest.
+As a user, you can create an account (through devise). As a registered user you can view the pets available for adoption and click on each pet to view more information. A register user can favorite animals they like and view a list of the animals they have favorited. A registered user can rank their favorite pets and delete pets from the favorites page. An unregistered user can view all the pets available for adoption and they can create an account. 
 
 Running The Project
 If I were to find your project and want to run it locally myself, how would I do that? Be sure to include steps like cd into the project directory, run npm install(if dependencies are needed), and any other considerations for getting the project to run correctly on a local machine (CI requirements, Bash/Zsh, etc).

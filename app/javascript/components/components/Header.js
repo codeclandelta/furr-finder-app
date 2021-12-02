@@ -27,28 +27,47 @@ class Header extends Component {
                     <img src={logo} alt='Illustration of a dog and cat' />
                     <span className='fs-1 fw-bold'>Furr Finder</span>
                   </NavLink>
-                  <Nav>
-                    <NavItem className='scroll-to-section'>
-                      <NavLink to='/' className='px-4'>
-                        Home
-                      </NavLink>
-                    </NavItem>
-                    <NavItem className='scroll-to-section'>
-                      <NavLink to='/aboutus' className='px-4'>
-                        About Us
-                      </NavLink>
-                    </NavItem>
-                    <NavItem className='scroll-to-section'>
-                      <a href={new_user_route} className=''>
-                        Sign Up
-                      </a>
-                    </NavItem>
-                    <NavItem className='scroll-to-section'>
-                      <a href={sign_in_route} className=''>
-                        Sign In
-                      </a>
-                    </NavItem>
-                  </Nav>
+                    <Nav>
+                      <NavItem className='scroll-to-section'>
+                        <NavLink to='/' className='px-4'>
+                          Home
+                        </NavLink>
+                      </NavItem>
+                      <NavItem className='scroll-to-section'>
+                        <NavLink to='/aboutus' className='px-4'>
+                          About Us
+                        </NavLink>
+                      </NavItem>
+
+                      {!logged_in &&
+                      <NavItem className='scroll-to-section'>
+                        <a href={new_user_route} className=''>
+                          Sign Up
+                        </a>
+                      </NavItem>
+                      }
+                      {!logged_in &&
+                      <NavItem className='scroll-to-section'>
+                        <a href={sign_in_route} className=''>
+                          Sign In
+                        </a>
+                      </NavItem>
+                      }
+                       {logged_in &&
+                      <NavItem className='scroll-to-section'>
+                        <NavLink to='/animalsprotectedindex' className='px-4'>
+                          Favorites
+                        </NavLink>
+                      </NavItem>
+                      }
+                      {logged_in &&
+                      <NavItem className='scroll-to-section'>
+                        <a href={sign_out_route} className=''>
+                          Sign Out
+                        </a>
+                      </NavItem>
+                      }
+                    </Nav>
                   <a className='menu-trigger'>
                     <span>Menu</span>
                   </a>

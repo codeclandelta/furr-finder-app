@@ -25,7 +25,7 @@ class Header extends Component {
                 <nav className='main-nav'>
                   <NavLink to='/' className='px-4 logo'>
                     <img src={logo} alt='Illustration of a dog and cat' />
-                    <span>Furr Finder</span>
+                    <span className='fs-1 fw-bold'>Furr Finder</span>
                   </NavLink>
                     <Nav>
                       <NavItem className='scroll-to-section'>

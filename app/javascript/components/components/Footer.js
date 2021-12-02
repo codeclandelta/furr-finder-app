@@ -6,9 +6,9 @@ class Footer extends Component {
   render() {
     return (
       <>
-        <footer>
+        <footer className='footer mt-auto py-3 bg-light'>
           <Navbar color='light' expand='md' light>
-            <NavbarText className='px-4'>&copy;2021Furr Finder</NavbarText>
+            <NavbarText className='px-4'>&copy;2021 Furr Finder</NavbarText>
             <NavLink to='/' className='px-4'>
               Home
             </NavLink>

@@ -884,7 +884,7 @@ Banner Style
   content: '';
   background: image-url('bk1-min.png');
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   position: absolute;
   left: 0;
   top: 0;
@@ -945,6 +945,7 @@ About Us
   padding-top: 130px;
   padding-bottom: 410px;
   position: relative;
+  z-index: 100;
 }
 
 .about-us .section-heading {
@@ -1010,6 +1011,23 @@ About Us
   width: 100%;
   height: 100%;
   z-index: 0;
+}
+
+.about-us-2:after {
+  content: '';
+  background: image-url('bg-4');
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.about-us-2 + .footer .navbar {
+  z-index: 100;
 }
 
 .sign-up-bg,

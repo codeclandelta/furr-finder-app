@@ -882,7 +882,7 @@ Banner Style
 
 .main-banner:after {
   content: '';
-  background-image: url('assets/bk1-min.png');
+  background-image: url('../assets/bk1-min.png');
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
@@ -1015,13 +1015,13 @@ About Us
   content: '';
   background-image: url('assets/footer-bg3-min.png');
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  z-index: 1;
+  z-index: 0;
 }
 
 /* 

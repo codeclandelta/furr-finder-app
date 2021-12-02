@@ -1,17 +1,52 @@
 import React, {Component} from 'react'
 import Card from 'react-bootstrap/Card'
-import { Row, Col, Button} from 'reactstrap'
+import { Row, Col, Button, Form, Input, FormGroup, Ranking} from 'reactstrap'
 import {NavLink} from 'react-router-dom'
 
 
 
+
 class AnimalsprotectedIndex extends Component {
-      
-        handleClick = (props)=> {
-        console.log(this.props)
+      constructor (props){
+        super(props);
+        this.state = {
+          favorites: [],
+          animal_id: null,
+          favorite_id: null
+        }
+        this.id_match = this.id_match.bind(this)
+      }
+      componentDidMount() {
+        this.favoritesRead()
+      }
+
+      favoritesRead = () => {
+        fetch('/favorites')
+          .then((response) => response.json())
+          .then((payload) => this.setState({ favorites: payload }))
+          .catch((errors) => console.log('favorites read errors', errors))
+      }
+
+    //     handleClick = (props)=> {
+    //     console.log(this.props)
+    // }
+
+  
+
+
+    id_match = (id) => {
+      this.setState({animal_id: id})
+      this.state.favorites.map(data => {
+        {if(this.state.animal_id === data.animal_id){
+          this.props.favoriteDelete(data.id, data.animal_id, data.user_id)
+        }}
+      })
     }
+    
+    
     render () {
-        const { animals , favorites}=this.props
+        const { animals , favorites, current_user}=this.props
+        
         console.log("animalsprotectedindex", this.props)
         return (
         <React.Fragment>
@@ -21,8 +56,8 @@ class AnimalsprotectedIndex extends Component {
           {favorites &&
             animals.map((animal) => {
               return (
-                <Col>
-                  <Card>
+                <Col key={animal.id}>
+                  <Card >
                     <Card.Img
                       variant='top'
                       src={animal.photo}
@@ -34,7 +69,8 @@ class AnimalsprotectedIndex extends Component {
                       <NavLink to={`/animalshow/${animal.id}`}>
                         See More{' '}
                       </NavLink>
-                      <Button onClick={() => this.props.animalDelete(animal.id)}>Delete Animal</Button>
+            
+                      <Button onClick={() => this.id_match(animal.id)}>Delete Animal</Button>
                     </Card.Body>
                   </Card>
                 </Col>

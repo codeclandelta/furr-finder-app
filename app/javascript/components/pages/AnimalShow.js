@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Form, Button, Row, Col } from 'reactstrap'
+import { Form, Button, Row, Col, NavItem } from 'reactstrap'
 import Card from 'react-bootstrap/Card'
 import { propTypes } from 'react-bootstrap/esm/Image'
 import { Redirect } from 'react-router-dom'
@@ -27,7 +27,7 @@ class AnimalShow extends Component {
   }
 
   render() {
-    const { logged_in, new_user_route,  animal } =
+    const { logged_in, new_user_route, sign_in_route, animal } =
       this.props
 
     return (
@@ -68,12 +68,12 @@ class AnimalShow extends Component {
           )}
         </Row>
         <br />
-        {logged_in && (
-          <a href={new_user_route} className='nav-link'>
-            Sign Up
-          </a>
-        )}
-        <Button onClick={() => this.handleClick()}>Add to Favorites</Button>
+        {!logged_in && (
+      
+          <Button onClick={() => this.handleClick()}>Add to Favorites</Button>
+        )
+        }
+        
       </React.Fragment>
     )
   }

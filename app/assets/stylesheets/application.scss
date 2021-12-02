@@ -195,8 +195,8 @@ ul {
 p {
   font-size: 15px;
   line-height: 30px;
-  font-weight: 300;
-  color: #afafaf;
+  // font-weight: 300;
+  // color: #afafaf;
 }
 
 img {
@@ -943,6 +943,7 @@ About Us
 
 .about-us {
   padding-top: 130px;
+  padding-bottom: 410px;
   position: relative;
 }
 
@@ -1005,10 +1006,49 @@ About Us
   background-size: cover;
   position: absolute;
   left: 0;
+  top: 230px;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.sign-up-bg,
+.sign-in-bg {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  padding: 150px 120px 150px 120px;
+  position: relative;
+  overflow: hidden;
+}
+
+.sign-up-bg:after,
+.sign-in-bg:after {
+  content: '';
+  background: image-url('sign-in-bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   z-index: 0;
+}
+
+.sign-in-form .container .col,
+.sign-in-bg .container .col {
+  z-index: 100;
+}
+
+.sign-in-form .card,
+.sign-in-bg .card {
+  background: #0000008c;
+  border-radius: 10px;
+}
+
+.bunny {
+  width: 450px;
 }
 
 /* 

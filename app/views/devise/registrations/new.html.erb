@@ -15,18 +15,17 @@
     </div>
 </header>
 
-<div class="row pt-6">
+<div class="row">
     <div class="col">
-        <section class="registration-form">
+        <section class="registration-form sign-in-bg">
             <div class="container h-100 pt-5 pb-5">
                 <div class="row d-flex justify-content-center align-items-center h-100 row">
                     <div class="col-lg-12 col-xl-11 col">
-                        <div class="card text-black">
+                        <div class="card text-white">
                             <div class="card-body p-md-5">
                                 <div class="row justify-content-center row">
                                     <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1 col">
                                         <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
-
                                         <%= form_for(resource,class: 'form mx-1 mx-md-4', as: resource_name, url: registration_path(resource_name)) do |f| %>
                                             <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -83,12 +82,10 @@
                                                 <%= f.submit "Register", class: "btn btn-primary btn-lg btn btn-secondary" %>
                                             </div>
 
-                                            </form>
                                             <% end %>
                                             <%= render "devise/shared/links" %>
                                     </div>
                                     <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-                                        
                                         <%= image_tag("black-cat.png", class: "blackcat", alt: "Black cat illustration") %>
                                     </div>
                                 </div>

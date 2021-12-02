@@ -1,46 +1,81 @@
-<div class="row">
+<header class="header-area header-sticky wow slideInDown main-wrapper color-teal">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <nav class="main-nav"><a aria-current="page" class="px-4 logo active" href="/"><%= image_tag("logo-furrfinder-2.png", alt: "Illustration of a dog and cat") %><span class="fs-1 fw-bold">Furr Finder</span></a>
+                    <ul class="nav">
+                        <li class="scroll-to-section nav-item"><a aria-current="page" class="px-4 active" href="/">Home</a></li>
+                        <li class="scroll-to-section nav-item"><a class="px-4" href="/aboutus">About Us</a></li>
+                        <li class="scroll-to-section nav-item"><a href="/users/sign_up" class="">Sign Up</a></li>
+                        <li class="scroll-to-section nav-item"><a href="/users/sign_in" class="">Sign In</a></li>
+                    </ul><a class="menu-trigger"><span>Menu</span></a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="sign-up-bg row">
     <div class="col">
-        <header class="main-wrapper color-yellow">
-            <nav class="navbar navbar-expand-md">
-                <div class="container-fluid">
-                    <span class="px-4 logo navbar-text">Furr Finder</span>
-                    <a aria-current="page" class="px-4 active" href="/">Home</a>
-                    <div class="collapse navbar-collapse">
-                        <ul class="me-auto navbar-nav">
-                            <li class="nav-item"><a class="px-4 nav-link" href="/aboutus">About Us</a></li>
-                            <li class="nav-item"><a href="/users/sign_up" class="nav-link">Sign Up</a></li>
-                            <li class="nav-item"><a href="/users/sign_in" class="nav-link">Sign In</a></li>
-                        </ul>
-                    </div>
+        <section class="sign-in-form">
+            <div class="container h-100 pt-5 pb-5">
+                <div class="row d-flex justify-content-center align-items-center h-100 row">
+                  <div class="col-lg-12 col-xl-11 col">
+                      <div class="card text-white">
+                          <div class="card-body p-md-5">
+                              <div class="row justify-content-center row">
+                                  <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1 col">
+                                      <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Log In</p>
+                                          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                                          <%= render "devise/shared/error_messages", resource: resource %>
+
+                                          <div class="d-flex flex-row align-items-center mb-4">
+                                              <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                              <div class="field form-outline flex-fill mb-0">
+                                                  <%= f.email_field :email, autofocus: true, autocomplete: "email", id: "form3Example1c", class: "form-control form-control" %>
+                                                  <%= f.label :email, for: "form3Example1c", class: "form-label form-label" %>
+                                              </div>
+                                          </div>
+                                          <div class="d-flex flex-row align-items-center mb-4">
+                                              <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                              <div class="field form-outline flex-fill mb-0">
+                                                  <%= f.password_field :password, autofocus: true, autocomplete: "current-password", id: "form3Example1c", class: "form-control form-control" %>
+                                                  <%= f.label :password, for: "form3Example1c", class: "form-label form-label" %>
+                                              </div>
+                                          </div>
+
+                                          <% if devise_mapping.rememberable? %>
+                                          <div class="d-flex flex-row align-items-center mb-4">
+                                              <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                              <div class="field form-outline flex-fill mb-0">
+                                                  <%= f.check_box :remember_me, autofocus: true, autocomplete: "remember-me", id: "form3Example1c", class: "form-check-input" %>
+                                                  <%= f.label :remember_me, for: "form3Example1c", class: "form-check-label" %>
+                                              </div>
+                                          </div>
+                                          <% end %>
+
+                                          <div class="actions d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                              <%= f.submit "Log in", class: "btn btn-primary btn-lg btn btn-secondary" %>
+                                          </div>
+                                        <% end %>
+                                        <%= render "devise/shared/links" %>
+                                  </div>
+                                  <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-right order-1 order-lg-2">
+                                      <%= image_tag("bunny.png", class: "bunny", alt: "Illustration of, either a rabbit, or an elephant.") %>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
                 </div>
-            </nav>
-        </header>
+            </div>
+        </section>
     </div>
 </div>
 
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+<footer class="footer mt-auto py-3 bg-light">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <div class="container-fluid"><span class="px-4 navbar-text">©2021 Furr Finder</span><a aria-current="page" class="px-4 active" href="/">Home</a>
+            <ul class="me-auto navbar-nav"><a class="px-4" href="/aboutUs">About Us</a><a class="px-4" href="/privacy">Privacy</a><a class="px-4" href="/terms">Terms of Service</a></ul>
+        </div>
+    </nav>
+</footer>
